@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Departments_Shared.DTO.Request
 {
-    public record CreateDepartmentResponse
+    public class UpdateDepartmentResponse
     {
         public required DepartmentModel Department { get; init; }
     }

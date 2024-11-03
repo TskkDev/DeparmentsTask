@@ -9,7 +9,7 @@ namespace Departments_Shared.DTO.Request
 {
     public record BaseDepartmentRequest
     {
-        [FromBody]
-        public required int Id { get; set; }
+        [FromRoute]
+        public required int Id { get; init; }
     }
 }

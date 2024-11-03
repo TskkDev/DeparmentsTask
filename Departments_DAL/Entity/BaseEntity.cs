@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace Departments_DAL.Entity
 {
-    public record BaseEntity
+    public class BaseEntity
     {
-        public required int Id { get; set; }
+        public int Id { get; set; }
     }
 }

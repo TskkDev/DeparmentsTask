@@ -6,5 +6,5 @@ using System.Threading.Tasks;
 
 namespace Departments_Shared.DTO.Request
 {
-    public record GetDepartmentRequest : BaseDepartmentRequest
+    public record GetDepartmentRequest : BaseDepartmentRequest;
 }

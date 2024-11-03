@@ -26,10 +26,14 @@ namespace Departments_DAL.Repository
 
         // почему не отдача общим массивом? - при большом колличестве департментов будет значительно проседать по перфомансу
         public async Task<IEnumerable<Departments>> GetDepartments()
-            => await _context.Departments.Where(d => d.ParentId == null).ToListAsync();
-        public async Task DeleteDepartment(int id)
         {
-            var department = await GetDepartment(id);
+            var departments = await _context.Departments.Where(d => d.ParentId == null).ToListAsync();
+            if (!departments.Any())
+                throw new NullReferenceException("No departments in DB");
+            return departments;
+        }
+        public async Task DeleteDepartment(Departments department)
+        {
             _context.Departments.Remove(department);
             await _context.SaveChangesAsync();
             
@@ -37,21 +41,30 @@ namespace Departments_DAL.Repository
 
         public async Task<Departments> InsertDepartment(Departments department)
         {
+            department.Id = 0;
             department.Order = await _context.Departments.CountAsync(d => d.ParentId == department.ParentId) + 1;
             await _context.Departments.AddAsync(department);
             await _context.SaveChangesAsync();
             return department;
         }
 
-        public async Task<Departments> UpdateDepartment(int id, int? newParentId)
+        public async Task<Departments> UpdateDepartment(Departments department, int? newParentId)
         {
-            var department = await GetDepartment(id);
-
-            var newParentDepartment = await GetDepartment(id);
-
-            department.ParentId = newParentId;
+            department.ParentId = newParentId == 0
+                ? null
+                : newParentId;
+            department.Order = await _context.Departments.CountAsync(d => d.ParentId == department.ParentId) + 1;
             await _context.SaveChangesAsync();
+
             return department;
+        }
+
+        public async Task<IEnumerable<Departments>> GetAllDepartments()
+        {
+            var departments = await _context.Departments.ToListAsync();
+            if (!departments.Any())
+                throw new NullReferenceException("No departments in DB");
+            return departments;
         }
     }
 }

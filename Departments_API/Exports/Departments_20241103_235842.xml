@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfDepartments xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Departments>
+    <Id>8</Id>
+    <Name>2</Name>
+    <Order>1</Order>
+    <ParentId>7</ParentId>
+  </Departments>
+  <Departments>
+    <Id>7</Id>
+    <Name>123</Name>
+    <Order>1</Order>
+    <ParentId>8</ParentId>
+  </Departments>
+  <Departments>
+    <Id>9</Id>
+    <Name>2</Name>
+    <Order>2</Order>
+    <ParentId>7</ParentId>
+  </Departments>
+  <Departments>
+    <Id>10</Id>
+    <Name>123</Name>
+    <Order>2</Order>
+    <ParentId>8</ParentId>
+  </Departments>
+  <Departments>
+    <Id>11</Id>
+    <Name>2</Name>
+    <Order>3</Order>
+    <ParentId>7</ParentId>
+  </Departments>
+  <Departments>
+    <Id>12</Id>
+    <Name>123</Name>
+    <Order>3</Order>
+    <ParentId>8</ParentId>
+  </Departments>
+</ArrayOfDepartments>

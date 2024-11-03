@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Departments_Shared.DTO.Request
 {
-    public record CreateDepartmentResponse
+    public class GetDepartmentsResponse
     {
-        public required DepartmentModel Department { get; init; }
+        public required IEnumerable<DepartmentModel> Department { get; init; }
     }
 }
